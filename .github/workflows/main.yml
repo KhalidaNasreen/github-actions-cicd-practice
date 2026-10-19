@@ -1,4 +1,5 @@
 name: CI Pipeline
+
 on:
   push:
     branches: [main]
@@ -69,4 +70,10 @@ jobs:
       - name: Scan image for vulnerabilities
         uses: aquasecurity/trivy-action@0.33.1
         with:
-          image-ref
+          scan-type: image
+          scan-ref: flask-cicd-app:${{ github.sha }}
+          format: table
+          exit-code: "1"
+          ignore-unfixed: true
+          vuln-type: os,library
+          severity: CRITICAL,HIGH
