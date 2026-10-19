@@ -68,7 +68,7 @@ jobs:
         run: docker load -i flask-image.tar
 
       - name: Scan image for vulnerabilities
-        uses: aquasecurity/trivy-action@0.33.1
+        uses: aquasecurity/trivy-action@0.36.0
         with:
           scan-type: image
           scan-ref: flask-cicd-app:${{ github.sha }}
